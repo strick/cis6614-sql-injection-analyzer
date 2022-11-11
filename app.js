@@ -35,18 +35,30 @@ app.get('/', function(request, response){
     });
 });
 
-app.post('/', function(request, response){
+// Assuming that the user is looking for a single row and parses the JSON request
+// You are able to inject something such as { "$gt": "" } to recieve the first record
+// i.e. a login attack  Ref: https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb
+app.post('/attackOne', function(request, response){
 
     console.log(request.body);
     response.render('index', {
         sql: inputGenerator.inputGenerator()
     });
 
-    var query = { username: "brian" };
+    var payload = request.body.test;
+    try{
+        payload = JSON.parse(payload);
+    }
+    catch(e){
 
-    dbo.collection('users').find(query).toArray(function(err, result) {
-    if (err) throw err;
-    console.log(result);
-  });
-    
+    }
+
+    //var query = { $where: function() { return this.username = "brian" }};//'{ $where: function() { return username = ' + request.body.test + '}};'//0;var date=new Date(); do{curDate = new Date();}while(curDate-date<10000)'};
+    //dbo.collection('users').find({"$where": "function(){ return this.username = '" + request.body.test + "';}" }).toArray(function(err, result) {
+    dbo.collection('users').findOne({"username": payload}, function(err, result) {
+        if (err) throw err;
+        console.log(result);
+    });
+
 });
+
