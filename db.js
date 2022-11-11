@@ -1,14 +1,8 @@
 var MongoClient = require('mongodb').MongoClient;
+var dotenv = require('dotenv');
+dotenv.config();
 
-ENV="dev"
-PORT="3001"
-DBHOST="localhost:3001"
-DBNAME="sqli"
-DBUSER="sqli"
-DBTYPE="mongodb"
-DBPASS="temp1234"
-
-URL = `${DBTYPE}://${DBHOST}/${DBNAME}`;
+URL = `${process.env.DBTYPE}://${process.env.DBHOST}/${process.env.DBNAME}`;
 
 const DB_URL = URL;
 
@@ -28,7 +22,7 @@ class DbConnector {
 
             this.client = db;
             app.emit('db-ready'); 
-            return db.db(DBNAME);
+            return db.db(process.env.DBNAME);
      
         })
         .catch(err => {
