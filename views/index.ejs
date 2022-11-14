@@ -1,53 +1,11 @@
 <html>
-    <head></head>
+    <head>
+        <title>CIS 6614 - SQL Injection Analyzer</title>
+    </head>
     <body>
-        <h1>CIS 6614 SQL Injection Finder</h1>          
-        <form method="POST" action="/verbAttack">
-            <label>Verb Comparison Attack: </label><input value='{ "$gt": "" }' name="payload" type="text" /></label>
-            <% if(query) { %>
-                <%=query %> 
-                <% } %>
-            <input type="submit" value="Submit" />
-        </form>
-        <form method="POST" action="/jsInjectionOne">
-            <label>Verb Where Attack: </label><input value="' || 'a'=='a" name="payload" type="text" /></label>
-            <% if(query) { %>
-                <%=query %> 
-                <% } %>
-            <input type="hidden" name="quoteType" value="0"  />
-            <input type="submit" value="Submit" />  
-            <% if(success){ %>
-                <strong style='color:green;'>Success</strong>
-            <% } else { %>
-                <strong style='color:red;'>Failure</strong>
-            <% } %>
-        </form>
-        <form method="POST" action="/jsInjectionOne">
-            <label>JS Injection Attack (using '): </label><input value="' || (function(){ var date=new Date(); do{curDate = new Date();}while(curDate-date<10000);})() || '" name="payload" type="text" /></label>
-            <% if(query) { %>
-                <%=query %> 
-                <% } %>
-            <input type="hidden" name="quoteType" value="0"  />
-            <input type="submit" value="Submit" />  
-            <% if(success){ %>
-                <strong style='color:green;'>Success</strong>
-            <% } else { %>
-                <strong style='color:red;'>Failure</strong>
-            <% } %>
-        </form>
-        <form method="POST" action="/jsInjectionOne">
-            <label>JS Injection Attack (using "): </label><input value='" || (function(){ var date=new Date(); do{curDate = new Date();}while(curDate-date<10000);})() || "' name="payload" type="text" /></label>
-            <% if(query) { %>
-                <%=query %> 
-                <% } %>
-            <input type="hidden" name="quoteType" value="1"  />
-            <input type="submit" value="Submit" />  
-            <% if(success){ %>
-                <strong style='color:green;'>Success</strong>
-            <% } else { %>
-                <strong style='color:red;'>Failure</strong>
-            <% } %>
-        </form>
-        
+        <h1>CIS 6614 - SQL Injection Analyzer</h1>
+        <ul>
+            <li><a href="/attack-vector-tester">Attack Vector Tester</a></li>
+        </ul>
     </body>
 </html>
