@@ -11,15 +11,6 @@ var dbo = null;
 const db = require('./db').DbConnector;
 (async () => {    
     dbo = await db.open(app);
-
-    app.set('views', path.resolve(__dirname, 'views'));
-    app.set('view engine', 'ejs');
-
-    app.use(bodyParser.urlencoded({ extended: false }));
-
-    var attackVectorTesterRouter = require('./routes/attack-vector-tester');
-
-    app.use('/attack-vector-tester', attackVectorTesterRouter);
 })();
 
 app.on('db-ready', function(my){
@@ -27,7 +18,17 @@ app.on('db-ready', function(my){
     
     http.createServer(app).listen(3000);
     console.log("Server is up");
+
 });
+
+app.set('views', path.resolve(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+var attackVectorTesterRouter = require('./routes/attack-vector-tester');
+
+app.use('/attack-vector-tester', attackVectorTesterRouter);
   
 app.get('/', function(request, response){
     response.render('index', {
