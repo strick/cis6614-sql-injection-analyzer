@@ -27,7 +27,9 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 var attackVectorTesterRouter = require('./routes/attack-vector-tester');
+var scannerRouter = require('./routes/scanner');
 
+app.use('/scanner', scannerRouter);
 app.use('/attack-vector-tester', attackVectorTesterRouter);
   
 app.get('/', function(request, response){
