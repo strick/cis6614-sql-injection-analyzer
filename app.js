@@ -59,6 +59,7 @@ app.get('/', function(request, response){
     response.render('index', {
         sql: inputGenerator.inputGenerator(),
         query: '',
+        pageTitle: 'Home',
         success: true
     });
 });

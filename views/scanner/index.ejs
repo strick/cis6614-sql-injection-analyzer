@@ -1,5 +1,35 @@
-<a href="/scanner/run-scan">Run</a>
+<div class="container"><div class="row">
+    <div class="col"><a href="/scanner/run-scan">Run</a></div>
+</div>
 <% try{
 %>
-<%=JSON.stringify(results);%>
+<div class="row">
+
+        <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <h5 class="card-title unsecure">Successful Attacks: <%=successes.length%></h5>
+            <p class="card-text">Fuzz Tests That Passed</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <% for (var i = 0; i<successes.length; i++){ %>
+                <li class="list-group-item"><%=successes[i]%></li>
+            <% } %>
+        </ul>
+        </div>
+        <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <h5 class="card-title secure">Prevented Attacks: <%=failures.length%></h5>
+            <p class="card-text">Fuzz Tests That Failed</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <% for (var i = 0; i<failures.length; i++){ %>
+                <li class="list-group-item"><%=failures[i]%></li>
+            <% } %>
+        </ul>
+        </div>
+
+</div>
 <% } catch(e){} %>
+</div>
