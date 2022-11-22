@@ -76,11 +76,20 @@ app.post('/login', async function(request, response){
 
         console.log("Printing results:");
         console.log(results);
-        response.render('profile', {
+        if(results != null ){
+            response.render('profile', {
+                results: results,
+                username: username,
+                password: password
+            });
+        }
+        else {
+            response.render('login', {
             results: results,
             username: username,
             password: password
         });
+    }
 
     });
     
