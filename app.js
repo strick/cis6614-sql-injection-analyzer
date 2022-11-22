@@ -4,6 +4,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var inputGenerator = require('./input-generator');
 
+const TEST_APP_CONFIG = {
+    'app-url': 'localhost:3006',
+    'views-directory': '../unsecure-app/views/',
+    'routes': {
+        'login': 'login'
+    }
+}
+
 var app = express();
 
 // Establish connection to MongoDb server.
@@ -31,6 +39,25 @@ var scannerRouter = require('./routes/scanner');
 
 app.use('/scanner', scannerRouter);
 app.use('/attack-vector-tester', attackVectorTesterRouter);
+
+
+
+
+/*
+    The attack vector tester will work on your own code to look for the following types of vulerbilites:
+
+    1) Login attack
+    2) Get verb attacks
+    3) Post verb attacks and other
+    4) Post JS injections
+
+*/
+
+
+
+app.get('/test-app', function(request, response){
+    response.render(TEST_APP_CONFIG['views-directory'] + 'index');
+});
   
 app.get('/', function(request, response){
     response.render('index', {

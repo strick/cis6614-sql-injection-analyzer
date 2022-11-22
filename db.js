@@ -18,7 +18,7 @@ class DbConnector {
             // serverSelectionTimeoutMS: 300000,
              useNewUrlParser: true, useUnifiedTopology: true
         }).then(db => {
- 
+
             this.client = db;
             app.emit('db-ready'); 
             return db.db(process.env.DBNAME);
