@@ -5,7 +5,7 @@ module.exports = {
     index: function (request, response, next) {
 
         response.render('scanner/index', {
-
+            pageTitle: 'Scanner'
         });
     },
 
@@ -20,7 +20,8 @@ module.exports = {
             console.log(results);
         
             response.render('scanner/index', {
-                results: results
+                results: results,
+                pageTitle: 'Scanner'
             });
         });
         

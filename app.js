@@ -4,6 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var inputGenerator = require('./input-generator');
 var config = require('./config').config;
+const expressLayouts = require('express-ejs-layouts');
 
 var app = express();
 
@@ -22,6 +23,8 @@ app.on('db-ready', function(my){
 
 });
 
+app.use(expressLayouts);
+app.set('layout', 'layout');
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
 

@@ -1,7 +1,4 @@
-<html>
-    <head></head>
-    <body>
-        <h1>CIS 6614 SQL Injection Finder</h1>          
+      
         <form method="POST" action="/attack-vector-tester/verb-attack">
             <label>Verb Comparison Attack: </label><input value='{ "$gt": "" }' name="payload" type="text" /></label>
             <% if(query) { %>
@@ -48,6 +45,3 @@
                 <strong style='color:red;'>Failure</strong>
             <% } %>
         </form>
-        
-    </body>
-</html>
