@@ -3,14 +3,7 @@ var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var inputGenerator = require('./input-generator');
-
-const TEST_APP_CONFIG = {
-    'app-url': 'localhost:3006',
-    'views-directory': '../unsecure-app/views/',
-    'routes': {
-        'login': 'login'
-    }
-}
+var config = require('./config').config;
 
 var app = express();
 
@@ -56,7 +49,7 @@ app.use('/attack-vector-tester', attackVectorTesterRouter);
 
 
 app.get('/test-app', function(request, response){
-    response.render(TEST_APP_CONFIG['views-directory'] + 'index');
+    response.render(config['views-directory'] + 'index');
 });
   
 app.get('/', function(request, response){

