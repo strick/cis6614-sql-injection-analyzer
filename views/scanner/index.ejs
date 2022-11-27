@@ -1,12 +1,12 @@
 <div class="container">
 <div class="row">
-    <div class="col-1"><h3><a href="/scanner/run-scan">Run</a></h3></div>
+    <div class="text-left col"><h3><a href="/scanner/run-scan">Run</a></h3></div>
 </div>
 <% try{
 %>
 <div class="row">
-
-        <div class="card" style="width: 18rem;">
+    <div class="col">
+        <div class="card">
 
         <div class="card-body">
             <h5 class="card-title unsecure">Successful Attacks: <%=successes.length%></h5>
@@ -18,7 +18,7 @@
             <% } %>
         </ul>
         </div>
-        <div class="card" style="width: 18rem;">
+        <div class="card">
 
         <div class="card-body">
             <h5 class="card-title secure">Prevented Attacks: <%=failures.length%></h5>
@@ -30,7 +30,7 @@
             <% } %>
         </ul>
         </div>
-
+    </div>
 </div>
 <% } catch(e){} %>
 </div>
