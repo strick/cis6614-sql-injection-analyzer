@@ -10,16 +10,16 @@ const TEST_APP_CONFIG = {
 }
 
 const FUZZ_TESTS = [
-    `true, $where: '1 == 1'`,
-    `, $where: '1 == 1'`,
-    `$where: '1 == 1'`,
-    `', $where: '1 == 1'`,
-    `1, $where: '1 == 1'`,
     `{ $ne: 1 }`,
     `', $or: [ {}, { 'a':'a`,
     `' } ], $comment:'successful MongoDB injection'`,
     `db.injection.insert({success:1});`,
     `db.injection.insert({success:1});return 1;db.stores.mapReduce(function() { { emit(1,1`,
+    `true, $where: '1 == 1'`,
+    `, $where: '1 == 1'`,
+    `$where: '1 == 1'`,
+    `', $where: '1 == 1'`,
+    `1, $where: '1 == 1'`,
     `|| 1==1`,
     `' || 'a'=='a`,
     `' && this.password.match(/.*/)//+%00`,
