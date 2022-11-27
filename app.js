@@ -32,9 +32,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 var attackVectorTesterRouter = require('./routes/attack-vector-tester');
 var scannerRouter = require('./routes/scanner');
+var testGeneratorRouter = require('./routes/test-generator');
 
 app.use('/scanner', scannerRouter);
 app.use('/attack-vector-tester', attackVectorTesterRouter);
+app.use('/test-generator', testGeneratorRouter);
 
 
 
