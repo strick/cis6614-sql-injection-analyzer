@@ -3,7 +3,7 @@ var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var inputGenerator = require('./input-generator');
-var config = require('./config').config;
+var config = require('./config');
 const expressLayouts = require('express-ejs-layouts');
 
 var app = express();
@@ -52,7 +52,10 @@ app.use('/attack-vector-tester', attackVectorTesterRouter);
 
 
 app.get('/test-app', function(request, response){
-    response.render(config['views-directory'] + 'index');
+    response.render(config.testApp['views-directory'] + 'index',
+    {
+        pageTitle: "Test App"
+    });
 });
   
 app.get('/', function(request, response){
