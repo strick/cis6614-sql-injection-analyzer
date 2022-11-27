@@ -5,7 +5,9 @@ module.exports = {
     index: function (request, response, next) {
 
         response.render('scanner/index', {
-            pageTitle: 'Scanner'
+            pageTitle: 'Scanner',
+            successes: [],
+            failures: [],
         });
     },
 
