@@ -1,6 +1,5 @@
 const TEST_APP_CONFIG = {
     'app-url': 'localhost:3006',
-    'views-directory': '../unsecure-app/views/',
     'routes': {
         'login': {
             'url': 'login',
