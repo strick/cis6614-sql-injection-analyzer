@@ -1,43 +1,65 @@
-var Scanner = require('../lib/Scanner').Scanner;
+const config = require('../config');
+const Scanner = require('../lib/Scanner').Scanner;
+
+let attackRoute = config.testApp.routes.login.url;
+let successContent = config.testApp.routes.login.successContent;
+
+function runScan() {
+        
+    let scanner = new Scanner();
+
+    return scanner.scanRemote().then(function(results){
+
+        // Tally the successes
+        successes = [];
+
+        for(let i = 0; i<results.length; i++){
+
+            if(results[i].success){
+                successes.push(results[i].fuzz);
+            }
+        }
+
+        return successes;
+    });
+
+}
 
 module.exports = {
     
     index: function (request, response, next) {
 
-        response.render('test-generator/index', {
-            pageTitle: 'Test Generator'
-        });
-    },
+        // Run the scan adn get which tests failed
+        runScan().then(function(successfulAttacks){
 
-    runScan: function(request, response){
-        
-        let scanner = new Scanner();
+            console.log(successfulAttacks);
 
-        scanner.scanRemote().then(function(results){
-
-            // Tally the failures and successes
-            successes = [];
-            failures = [];
-
-            for(let i = 0; i<results.length; i++){
-
-                if(results[i].success){
-                    successes.push(results[i].fuzz);
-                }
-                else {
-                    failures.push(results[i].fuzz);
-                }
-            }
-            response.render('scanner/index', {
-                results: results,
-                successes: successes,
-                failures: failures,
-                pageTitle: 'Scanner'
+            // Build a Jasmine test for each failed one
+            let jasmineTests = [];
+            
+            for(let i=0; i<successfulAttacks.length; i++){
+                
+                jasmineTests.push(
+                `
+describe('${attackRoute} controller requests', () => {
+    it('should not contain successful content when NoSQL Injection ${successfulAttacks[i]} is used', async () => {
+        const res = await request(app)
+            .get('${attackRoute}')
+            .expect(200)
+            .expect(function(res){
+                if(res.text.includes("${successContent}")) throw new Error("NoSQL Injection vulnerability found!");
             });
-        });
-        
-        // Look at each .ejs file
+    });
+});` 
+                );
+            }    
+            
+            response.render('test-generator/index', {
+                pageTitle: 'Test Generator',
+                success: successfulAttacks,
+                jasmineTests: jasmineTests
+           });
 
-        // Look for <input> types
-    },
+        });
+    }
 }
