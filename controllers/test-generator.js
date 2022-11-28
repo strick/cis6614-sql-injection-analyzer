@@ -42,14 +42,18 @@ module.exports = {
                 jasmineTests.push(
                 `
 describe('${attackRoute} controller requests', () => {
-    it('should not contain successful content when NoSQL Injection ${successfulAttacks[i]} is used', async () => {
-        const res = await request(app)
-            .get('${attackRoute}')
-            .expect(200)
-            .expect(function(res){
-                if(res.text.includes("${successContent}")) throw new Error("NoSQL Injection vulnerability found!");
-            });
-    });
+    it('should not contain successful content when NoSQL Injection ${successfulAttacks[i]} is used', 
+        async () => {
+            const res = await request(app)
+                .get('${attackRoute}')
+                .expect(200)
+                .expect(function(res){
+                    if(res.text.includes("${successContent}")) {
+                        throw new Error("NoSQL Injection vulnerability found!");
+                    }
+                });
+        }
+    );
 });` 
                 );
             }    
