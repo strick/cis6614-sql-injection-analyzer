@@ -1,5 +1,3 @@
-var inputGenerator = require('../input-generator');
-//const dbo = require('../db').DbConnector.open();
 const DbConnector = require('../db').DbConnector;
 
 function getPayload(request) {
@@ -20,7 +18,6 @@ module.exports = {
     index: function (request, response, next) {
 
         response.render('attack-vector-tester/index', {
-            sql: inputGenerator.inputGenerator(),
             query: '',
             pageTitle: 'Attack Vector Tester',
             success: true 

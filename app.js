@@ -2,8 +2,6 @@ var http = require('http');
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
-var inputGenerator = require('./input-generator');
-var config = require('./config');
 const expressLayouts = require('express-ejs-layouts');
 
 var app = express();
@@ -38,31 +36,8 @@ app.use('/scanner', scannerRouter);
 app.use('/attack-vector-tester', attackVectorTesterRouter);
 app.use('/test-generator', testGeneratorRouter);
 
-
-
-
-/*
-    The attack vector tester will work on your own code to look for the following types of vulerbilites:
-
-    1) Login attack
-    2) Get verb attacks
-    3) Post verb attacks and other
-    4) Post JS injections
-
-*/
-
-
-
-app.get('/test-app', function(request, response){
-    response.render(config.testApp['views-directory'] + 'index',
-    {
-        pageTitle: "Test App"
-    });
-});
-  
 app.get('/', function(request, response){
     response.render('index', {
-        sql: inputGenerator.inputGenerator(),
         query: '',
         pageTitle: 'Home',
         success: true
