@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'men-injection-guard'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_302E5908F7B14774A64CF6BDC11FF7E2 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E3F8C144C346461AB3903AC19BD1FDFF }}
           package: .
