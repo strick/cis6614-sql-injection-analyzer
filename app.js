@@ -16,7 +16,7 @@ const db = require('./db').DbConnector;
 app.on('db-ready', function(my){
     console.log("DB is connected");
     
-    http.createServer(app).listen(3000);
+    http.createServer(app).listen(process.env.PORT || 3000);
     console.log("Server is up");
 
 });
