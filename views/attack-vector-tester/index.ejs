@@ -1,13 +1,13 @@
       
         <form method="POST" action="/attack-vector-tester/verb-attack">
-            <label>Verb Comparison Attack: </label><input value='{ "$gt": "" }' name="payload" type="text" /></label>
+            <label>Tautologies Attack: </label><input value='{ "$gt": "" }' name="payload" type="text" /></label>
             <% if(query) { %>
                 <%=query %> 
                 <% } %>
             <input type="submit" value="Submit" />
         </form>
         <form method="POST" action="/attack-vector-tester/js-injection-one">
-            <label>Verb Where Attack: </label><input value="' || 'a'=='a" name="payload" type="text" /></label>
+            <label>Union Attack: </label><input value="' || 'a'=='a" name="payload" type="text" /></label>
             <% if(query) { %>
                 <%=query %> 
                 <% } %>

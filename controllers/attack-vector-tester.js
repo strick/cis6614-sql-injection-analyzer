@@ -70,7 +70,7 @@ module.exports = {
 
         response.render('attack-vector-tester/index', {
             success: true,
-            query: `findOne({"username": ${JSON.stringify(payload)}})`,
+            query: `findOne({"username": ` + JSON.stringify(payload) + `})`,
             pageTitle: 'Attack Vector Tester'
         });
 
@@ -112,7 +112,7 @@ module.exports = {
                 response.render('index', {
                     success: false,
                     //query: ".find({$where: `this.username == ' ${JSON.stringify(payload)}'})`"
-                    query: '.find({$where: `this.username == "${JSON.stringify(payload)}"})`',
+                    query: '.find({$where: `this.username == ' + JSON.stringify(payload) + '})`',
                     pageTitle: 'Attack Vector Tester'
                 });
                 return;
@@ -122,7 +122,7 @@ module.exports = {
 
             response.render('attack-vector-tester/index', {
                 success: true,
-                query: ".find({$where: `this.username == ' ${JSON.stringify(payload)}})`",
+                query: '.find({$where: `this.username == ' + JSON.stringify(payload) + '})`',
                 pageTitle: 'Attack Vector Tester'
             });
         });
