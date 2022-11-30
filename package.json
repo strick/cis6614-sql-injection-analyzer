@@ -5,11 +5,9 @@
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "express-ejs-layouts": "^2.5.1",
-    "htmlparser": "^1.7.7",
     "http": "^0.0.1-security",
     "mongoose": "^6.7.2",
     "nodemon": "^2.0.20",
-    "path": "^0.12.7",
-    "soupselect": "^0.2.0"
+    "path": "^0.12.7"
   }
 }
