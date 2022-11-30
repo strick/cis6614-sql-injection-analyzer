@@ -51,7 +51,8 @@ else {
         <h4>Target Application Configuration</h2>
         <form method="POST" action="/scanner/run-scan">
             <ul class="config-options-input">
-                <li><label>App URL: <input type="text" value="<%=defaultConfigOptions.url%>" name="url" /></label></li>          
+                <li><label>App URL: <input type="text" value="<%=defaultConfigOptions.url%>" name="url" /></label></li>
+                <li><label>Target Inputs: <textarea name="targetInputs"><%=defaultConfigOptions.targetInputs%></textarea></label></li>
                 <li><label>Success Content: </label><input type="text" value="<%=defaultConfigOptions.successContent%>" name="successContent" /></li>           
                 <li><input type="submit" value="Run" /></li>
             </ul>

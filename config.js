@@ -3,6 +3,7 @@ const TEST_APP_CONFIG = {
     'routes': {
         'login': {
             'url': 'login',
+            'targetInputs': 'username,password',
             'successContent': 'Welcome to your profile'
         }
     }

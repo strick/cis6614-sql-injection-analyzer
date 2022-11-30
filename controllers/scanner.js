@@ -11,6 +11,7 @@ module.exports = {
             failures: [],
             defaultConfigOptions: {
                 url: config.testApp['app-url'] + config.testApp.routes.login.url,
+                targetInputs: config.testApp.routes.login.targetInputs,
                 successContent: config.testApp.routes.login.successContent
             }
         });
@@ -44,7 +45,8 @@ module.exports = {
                 pageTitle: 'Scanner',
                 defaultConfigOptions: {
                     url: request.body.url,
-                    successContent: request.body.successContent
+                    successContent: request.body.successContent,
+                    targetInputs: request.body.targetInputs
                 }
             });
         });
