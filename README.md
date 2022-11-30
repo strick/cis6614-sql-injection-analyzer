@@ -27,5 +27,23 @@ MongoDb Atlas provides a free teir verison for a MongoDb database.  To setup, yo
 
 ![image](https://user-images.githubusercontent.com/1486739/204690671-499c20a1-3092-438e-b447-2716cc76ea4f.png)
 
-#### Node.js
+#### Node.js and NPM
 
+To install Node.js, following the instructions for your system here:  https://nodejs.org/en/
+
+NPM should be included, but if it's not, you are able to download it here:  https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+
+### Installing MEN Injection Guard
+
+Now that you have all the prereqs install, you can now clone MEN Injection Guard to your local machine from here:  https://github.com/strick/cis6614-sql-injection-analyzer
+
+Once you've downloaded a copy, you'll need to go into the root directory and run "npm update" or "npm install" to get all of the required dependencies.
+
+Next you'll want to create .env file in the root directory with the following values:
+
+ENV="dev"
+DBHOST="your db host"  # looks like yourmongodbclustername.jwjidxx.mongodb.net/?retryWrites=true&w=majorit
+DBNAME="your db name"
+DBUSER="your db user"
+DBTYPE="mongodb+srv"
+DBPASS="your db passord"
