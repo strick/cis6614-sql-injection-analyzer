@@ -42,8 +42,13 @@ Once you've downloaded a copy, you'll need to go into the root directory and run
 Next you'll want to create .env file in the root directory with the following values:
 
 ENV="dev"
+
 DBHOST="your db host"  # looks like yourmongodbclustername.jwjidxx.mongodb.net/?retryWrites=true&w=majorit
+
 DBNAME="your db name"
+
 DBUSER="your db user"
+
 DBTYPE="mongodb+srv"
+
 DBPASS="your db passord"
