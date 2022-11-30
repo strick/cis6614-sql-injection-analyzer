@@ -1,4 +1,5 @@
 var Scanner = require('../lib/Scanner').Scanner;
+var config = require("../config");
 
 module.exports = {
     
@@ -8,6 +9,10 @@ module.exports = {
             pageTitle: 'Scanner',
             successes: [],
             failures: [],
+            defaultConfigOptions: {
+                url: config.testApp['app-url'] + config.testApp.routes.login.url,
+                successContent: config.testApp.routes.login.successContent
+            }
         });
     },
 
@@ -36,7 +41,11 @@ module.exports = {
                 results: results,
                 successes: successes,
                 failures: failures,
-                pageTitle: 'Scanner'
+                pageTitle: 'Scanner',
+                defaultConfigOptions: {
+                    url: request.body.url,
+                    successContent: request.body.successContent
+                }
             });
         });
         

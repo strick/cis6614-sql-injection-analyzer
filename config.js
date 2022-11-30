@@ -1,5 +1,5 @@
 const TEST_APP_CONFIG = {
-    'app-url': 'localhost:3006',
+    'app-url': 'http://localhost:3006/',
     'routes': {
         'login': {
             'url': 'login',
