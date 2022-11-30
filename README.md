@@ -52,3 +52,5 @@ DBUSER="your db user"
 DBTYPE="mongodb+srv"
 
 DBPASS="your db passord"
+
+Finally, navigate to the root directory (where you put the .env file) and type "node app.js" to start the application.   The app should then be able to be accessed by going to http://localhost:3000.
