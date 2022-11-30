@@ -1,9 +1,7 @@
 # MEN Injection Guard
 Project for CIS 6614
-## Installation Instuctions
-Please follow the following steps to install MEN Injection Guard onto your system along with its vunreable test application
 
-### Quick Setup (Use Existing MongoDb Server)
+## Quick Setup (Use Existing MongoDb Server)
 1) Install Node.js and NPM
 2) Clone this repo to your machine
 3) Create .env files in the root directory and in the /unsecure-app directory
@@ -11,6 +9,9 @@ Please follow the following steps to install MEN Injection Guard onto your syste
 5) Navigate to the root directory (/) and start the application with "node app.js"
 6) Navigate to /unsecure-app and run "node app.js"
 4) Go to http://localhost:3000
+
+## Full Installation Instuctions
+Please follow the following steps to install MEN Injection Guard onto your system along with its vunreable test application
 
 ### Prereqs
 
@@ -38,7 +39,9 @@ MongoDb Atlas provides a free teir verison for a MongoDb database.  To setup, yo
 
 ![image](https://user-images.githubusercontent.com/1486739/204690671-499c20a1-3092-438e-b447-2716cc76ea4f.png)
 
-7) Grab the connection string to use in the .env files
+7) Grab the connection string to use in the .env files by going to "Databases" -> Connect -> Connect using VS Code.   Save this string to later put into your .env files as DBHOST=yourConnectionDetails
+
+![image](https://user-images.githubusercontent.com/1486739/204696465-5fda3cad-bece-4bd4-a5b6-32059efa8254.png)
 
 #### Node.js and NPM
 
@@ -56,18 +59,14 @@ Once you've downloaded a copy, you'll need to go into the root directory and run
 
 Next you'll want to create .env file in the root directory with the following values:
 
-ENV="dev"
+DBHOST="your db host"  # looks mongodb+srv://<user>:<password>@cluster0.jwjidxx.mongodb.net/test
 
-DBHOST="your db host"  # looks like yourmongodbclustername.jwjidxx.mongodb.net/?retryWrites=true&w=majorit
+Next, copy this .env into /unsecure-app (it will need it too) (i.e. you'll have /.env and a /unsecure-app/.env)
 
-DBNAME="your db name"
-
-DBUSER="your db user"
-
-DBTYPE="mongodb+srv"
-
-DBPASS="your db passord"
 
 ### Lanuch app
 
-Finally, navigate to the root directory (where you put the .env file) and type "node app.js" to start the application.   The app should then be able to be accessed by going to http://localhost:3000.
+Finally, navigate to the root directory and type "node app.js" to start the application.
+Then go to /unsecure-app and start the test app with "node app.js"
+
+The app should then be able to be accessed by going to http://localhost:3000.
