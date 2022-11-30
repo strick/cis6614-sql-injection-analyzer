@@ -3,6 +3,12 @@ Project for CIS 6614
 ## Installation Instuctions
 Please follow the following steps to install MEN Injection Guard onto your system along with its vunreable test application
 
+### TLDR
+1) Install Node.js and NPM
+2) Clone this repo to your machine
+3) Navigate to the root directory and start the application with "node app.js"
+4) Go to http://localhost:3000
+
 ### Prereqs
 
 To successfully run MEN Injection Guard on your system, you will need to have MongoDb install and running as well as Node.js and NPM.
