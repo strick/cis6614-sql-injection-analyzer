@@ -1,14 +1,25 @@
 <div class="container">
     <div class="row">
-        <div class="text-left col">
+        <div class="text-left col-8">
             <p>Below are Jasmine tests that you can use in your MEV applicaiton to prevent future attacks where this tool found vulnerabilities.  For more infomation on Jasmine Behavior-Driven JavaScript, please visit their website here: <a href="https://jasmine.github.io/">https://jasmine.github.io/</a></p>
+            <%for(let i=0; i<jasmineTests.length; i++){ %> 
+                <div class="row">
+                    <div class="col text-left">
+                        <code><pre><%-jasmineTests[i]%></pre></code>
+                    </div>        
+                </div>
+                <% } %>
+        </div>
+        <div class="col-4">        
+            <h4>Target Application Configuration</h2>
+            <form method="POST" action="/test-generator">
+                <ul class="config-options-input">
+                    <li><label>App URL: <input type="text" value="<%=defaultConfigOptions.url%>" name="url" /></label></li>
+                    <li><label>Target Inputs: <textarea name="targetInputs"><%=defaultConfigOptions.targetInputs%></textarea></label></li>
+                    <li><label>Success Content: </label><input type="text" value="<%=defaultConfigOptions.successContent%>" name="successContent" /></li>           
+                    <li><input type="submit" value="Run" /></li>
+                </ul>
+            </form> 
         </div>
     </div>
-    <%for(let i=0; i<jasmineTests.length; i++){ %> 
-    <div class="row">
-        <div class="col text-left">
-            <code><pre><%-jasmineTests[i]%></pre></code>
-        </div>
-    </div>
-    <% } %>
 </div>

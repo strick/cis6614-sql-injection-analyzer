@@ -1,14 +1,12 @@
 const config = require('../config');
 const Scanner = require('../lib/Scanner').Scanner;
 
-let attackRoute = config.testApp.routes.login.url;
-let successContent = config.testApp.routes.login.successContent;
 
-function runScan() {
+function runScan(body) {
         
     let scanner = new Scanner();
 
-    return scanner.scanRemote().then(function(results){
+    return scanner.scanRemote(body).then(function(results){
 
         // Tally the successes
         successes = [];
@@ -29,8 +27,26 @@ module.exports = {
     
     index: function (request, response, next) {
 
+        response.render('test-generator/index', {
+            pageTitle: 'Test Generator',
+            success: [],
+            jasmineTests: [],
+            defaultConfigOptions: {
+                url: config.testApp['app-url'] + config.testApp.routes.login.url,
+                targetInputs: config.testApp.routes.login.targetInputs,
+                successContent: config.testApp.routes.login.successContent
+            }
+        });
+
+    },
+
+    run: function (request, response, next) {
+
+        let attackRoute = request.body.url;
+        let successContent = request.body.successContent;
+
         // Run the scan adn get which tests failed
-        runScan().then(function(successfulAttacks){
+        runScan(request.body).then(function(successfulAttacks){
 
             console.log(successfulAttacks);
 
@@ -61,7 +77,12 @@ describe('${attackRoute} controller requests', () => {
             response.render('test-generator/index', {
                 pageTitle: 'Test Generator',
                 success: successfulAttacks,
-                jasmineTests: jasmineTests
+                jasmineTests: jasmineTests,
+                defaultConfigOptions: {
+                    url: request.body.url,
+                    successContent: request.body.successContent,
+                    targetInputs: request.body.targetInputs
+                }
            });
 
         });
