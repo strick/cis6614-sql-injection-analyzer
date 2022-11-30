@@ -1,11 +1,14 @@
 # MEN Injection Guard
 Project for CIS 6614
 
-## Quick Setup (Use Existing MongoDb Server)
+## No Setup Required (Recommended)
+1) MEN Injection Guard is hosted using Azure here:  https://men-injection-guard.azurewebsites.net/
+
+## Local Machine Quick Setup (Use Existing MongoDb Atlas Server)
 1) Install Node.js and NPM
 2) Clone this repo to your machine
 3) Create .env files in the root directory and in the /unsecure-app directory
-4) Update the .env files with the supplied connection details
+4) Update the .env files with the supplied connection details (i.e. DBHOST=)
 5) Navigate to the root directory (/) and start the application with "node app.js"
 6) Navigate to /unsecure-app and run "node app.js"
 4) Go to http://localhost:3000
@@ -17,9 +20,7 @@ Please follow the following steps to install MEN Injection Guard onto your syste
 
 To successfully run MEN Injection Guard on your system, you will need to have MongoDb install and running as well as Node.js and NPM.
 
-NOTE:  If you just want to examine the Fuzz testing and automated test generateion, you can skip the MongoDb Atlas installation as well as the .env file setup as those are only needed to use the Attack Vector Tool component.
-
-#### MongoDb Atlas  (Skippable)
+#### MongoDb Atlas
 
 MongoDb Atlas provides a free teir verison for a MongoDb database.  To setup, you'll need to do the following:
 
@@ -55,14 +56,13 @@ Now that you have all the prereqs install, you can now clone MEN Injection Guard
 
 Once you've downloaded a copy, you'll need to go into the root directory and run "npm update" or "npm install" to get all of the required dependencies.
 
-### .env Setup (Skippable)
+### .env Setup
 
 Next you'll want to create .env file in the root directory with the following values:
 
 DBHOST="your db host"  # looks mongodb+srv://<user>:<password>@cluster0.jwjidxx.mongodb.net/test
 
 Next, copy this .env into /unsecure-app (it will need it too) (i.e. you'll have /.env and a /unsecure-app/.env)
-
 
 ### Lanuch app
 
