@@ -3,10 +3,13 @@ Project for CIS 6614
 ## Installation Instuctions
 Please follow the following steps to install MEN Injection Guard onto your system along with its vunreable test application
 
-### TLDR
+### Quick Setup (Use Existing MongoDb Server)
 1) Install Node.js and NPM
 2) Clone this repo to your machine
-3) Navigate to the root directory and start the application with "node app.js"
+3) Create .env files in the root directory and in the /unsecure-app directory
+4) Update the .env files with the supplied connection details
+5) Navigate to the root directory (/) and start the application with "node app.js"
+6) Navigate to /unsecure-app and run "node app.js"
 4) Go to http://localhost:3000
 
 ### Prereqs
@@ -34,6 +37,8 @@ MongoDb Atlas provides a free teir verison for a MongoDb database.  To setup, yo
 6) Insert some username and password documents
 
 ![image](https://user-images.githubusercontent.com/1486739/204690671-499c20a1-3092-438e-b447-2716cc76ea4f.png)
+
+7) Grab the connection string to use in the .env files
 
 #### Node.js and NPM
 

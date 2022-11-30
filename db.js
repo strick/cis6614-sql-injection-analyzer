@@ -14,7 +14,7 @@ class DbConnector {
             return this.db;
         }
 
-        this.db = await MongoClient.connect(DB_URL, {
+        this.db = await MongoClient.connect(process.env.DBHOST, {
             // serverSelectionTimeoutMS: 300000,
              useNewUrlParser: true, useUnifiedTopology: true
         }).then(db => {
