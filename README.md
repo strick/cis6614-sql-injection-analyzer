@@ -1,6 +1,13 @@
 # MEN Injection Guard
 Project for CIS 6614
 
+## Using MEN Injection Guard
+1) Scanning:  Go to https://men-injection-guard.azurewebsites.net/scanner and fill out the target configuration options:
+- URL:  The URL that you want to attack
+- Target Inuputs:  A comma delimeted list of input values to send NoSQL Injection attacks to.  For example If you want to populate <input name="username"> and <input name="password"> then you would type password,username
+- Success Content:  This is the content you would expect to see on a successful attack
+
+
 ## No Setup Required (Recommended)
 1) MEN Injection Guard is hosted using Azure here:  https://men-injection-guard.azurewebsites.net/
 
