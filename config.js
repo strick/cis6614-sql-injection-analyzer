@@ -1,5 +1,5 @@
 const TEST_APP_CONFIG = {
-    'app-url': 'http://localhost:3006/',
+    'app-url': 'https://men-injection-guard-demoapp.azurewebsites.net/',
     'routes': {
         'login': {
             'url': 'login',
