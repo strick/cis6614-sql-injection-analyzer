@@ -20,7 +20,7 @@ module.exports = {
         
         let scanner = new Scanner();
 
-        scanner.scanRemote().then(function(results){
+        scanner.scanRemote(request.body).then(function(results){
             console.log("results: ");
             console.log(results);
         
