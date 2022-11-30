@@ -21,7 +21,7 @@ MongoDb Atlas provides a free teir verison for a MongoDb database.  To setup, yo
 
 4) Add your IP address to the IP Access list
 
-5) Create a new database called "sqli" and a collection called "users1"
+5) Create a new database called "sqli" and a collection called "users"
 
 6) Insert some username and password documents
 
