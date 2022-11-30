@@ -7,7 +7,9 @@ Please follow the following steps to install MEN Injection Guard onto your syste
 
 To successfully run MEN Injection Guard on your system, you will need to have MongoDb install and running as well as Node.js and NPM.
 
-#### MongoDb Atlas
+NOTE:  If you just want to examine the Fuzz testing and automated test generateion, you can skip the MongoDb Atlas installation as well as the .env file setup as those are only needed to use the Attack Vector Tool component.
+
+#### MongoDb Atlas  (Skippable)
 
 MongoDb Atlas provides a free teir verison for a MongoDb database.  To setup, you'll need to do the following:
 
@@ -39,6 +41,8 @@ Now that you have all the prereqs install, you can now clone MEN Injection Guard
 
 Once you've downloaded a copy, you'll need to go into the root directory and run "npm update" or "npm install" to get all of the required dependencies.
 
+### .env Setup (Skippable)
+
 Next you'll want to create .env file in the root directory with the following values:
 
 ENV="dev"
@@ -52,5 +56,7 @@ DBUSER="your db user"
 DBTYPE="mongodb+srv"
 
 DBPASS="your db passord"
+
+### Lanuch app
 
 Finally, navigate to the root directory (where you put the .env file) and type "node app.js" to start the application.   The app should then be able to be accessed by going to http://localhost:3000.
