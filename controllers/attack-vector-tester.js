@@ -50,16 +50,34 @@ module.exports = {
         console.log("Running verb attacks:");
         console.log("Payload: " + JSON.stringify(payload));
 
+        let success = true;
+        let errorMsg = '';
+
         //var query = { $where: function() { return this.username = "brian" }};//'{ $where: function() { return username = ' + request.body.test + '}};'//0;var date=new Date(); do{curDate = new Date();}while(curDate-date<10000)'};
         //dbo.collection('users').find({"$where": "function(){ return this.username = '" + request.body.test + "';}" }).toArray(function(err, result) {
         await DbConnector.db.collection('users').findOne({"username": payload}, function(err, result) {
 
-            if (err) throw err;
+            if (err) {
+                success = false;
+                errorMsg = err;
+            }
             console.log(`Query: dbo.collection('users').findOne({"username": ${JSON.stringify(payload)}"`);
-            console.log(result);            
+            console.log(result);   
+            
+            if(result == null){
+                success = false;
+            }
+ 
+            response.render('attack-vector-tester/index', {
+                success: success,
+                query: `findOne({"username": ` + JSON.stringify(payload) + `})`,
+                pageTitle: 'Attack Vector Tester',
+                errorMsg: errorMsg,
+                attackType: request.body.attackType
+            });
 
         });
-
+/*
         await DbConnector.db.collection('users').find({"username": payload}).toArray(function(err, result) {
             if (err) throw err;
     
@@ -68,14 +86,8 @@ module.exports = {
             console.log(result);
     
         });
+*/
 
-        response.render('attack-vector-tester/index', {
-            success: true,
-            query: `findOne({"username": ` + JSON.stringify(payload) + `})`,
-            pageTitle: 'Attack Vector Tester',
-            errorMsg: '',
-            attackType: request.body.attackType
-        });
 
     },
 
