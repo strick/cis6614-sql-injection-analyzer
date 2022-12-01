@@ -49,6 +49,20 @@ module.exports = {
                     targetInputs: request.body.targetInputs
                 }
             });
+        })
+        .catch(function(e){
+            console.log("Error: " + e);
+            response.render('scanner/index', {
+                results: [],
+                successes: [],
+                failures: [],
+                pageTitle: 'Scanner - Bad URL Request',
+                defaultConfigOptions: {
+                    url: request.body.url,
+                    successContent: request.body.successContent,
+                    targetInputs: request.body.targetInputs
+                }
+            });
         });
         
         // Look at each .ejs file

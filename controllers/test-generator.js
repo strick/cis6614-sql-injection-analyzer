@@ -19,7 +19,10 @@ function runScan(body) {
         }
 
         return successes;
-    });
+    })
+    .catch(function(e){
+        console.log("Error: " + e);
+    });;
 
 }
 
@@ -86,5 +89,6 @@ describe('${attackRoute} controller requests', () => {
            });
 
         });
+        
     }
 }
