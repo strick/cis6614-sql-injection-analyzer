@@ -20,7 +20,8 @@ module.exports = {
         response.render('attack-vector-tester/index', {
             query: '',
             pageTitle: 'Attack Vector Tester',
-            success: true 
+            success: true ,
+            errorMsg: ''
         });
     },
 
@@ -71,7 +72,9 @@ module.exports = {
         response.render('attack-vector-tester/index', {
             success: true,
             query: `findOne({"username": ` + JSON.stringify(payload) + `})`,
-            pageTitle: 'Attack Vector Tester'
+            pageTitle: 'Attack Vector Tester',
+            errorMsg: '',
+            attackType: request.body.attackType
         });
 
     },
@@ -109,22 +112,27 @@ module.exports = {
             if (err) {
                 //throw err;
                 console.log(err);
-                response.render('index', {
+                response.render('attack-vector-tester/index', {
                     success: false,
                     //query: ".find({$where: `this.username == ' ${JSON.stringify(payload)}'})`"
                     query: '.find({$where: `this.username == ' + JSON.stringify(payload) + '})`',
-                    pageTitle: 'Attack Vector Tester'
+                    pageTitle: 'Attack Vector Tester - Error',
+                    errorMsg: err,
+                    attackType: request.body.attackType
                 });
-                return;
+       
             }
-        
-            console.log(result);
+            else {
+                console.log(result);
 
-            response.render('attack-vector-tester/index', {
-                success: true,
-                query: '.find({$where: `this.username == ' + JSON.stringify(payload) + '})`',
-                pageTitle: 'Attack Vector Tester'
-            });
+                response.render('attack-vector-tester/index', {
+                    success: true,
+                    query: '.find({$where: `this.username == ' + JSON.stringify(payload) + '})`',
+                    pageTitle: 'Attack Vector Tester',
+                    errorMsg: '',
+                    attackType: request.body.attackType
+                });
+            }       
         });
         
     }

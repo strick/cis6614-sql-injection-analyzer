@@ -1,47 +1,98 @@
       
-        <form method="POST" action="/attack-vector-tester/verb-attack">
-            <label>Tautologies Attack: </label><input value='{ "$gt": "" }' name="payload" type="text" /></label>
-            <% if(query) { %>
-                <%=query %> 
-                <% } %>
-            <input type="submit" value="Submit" />
-        </form>
-        <form method="POST" action="/attack-vector-tester/js-injection-one">
-            <label>Union Attack: </label><input value="' || 'a'=='a" name="payload" type="text" /></label>
-            <% if(query) { %>
-                <%=query %> 
-                <% } %>
-            <input type="hidden" name="quoteType" value="0"  />
-            <input type="submit" value="Submit" />  
-            <% if(success){ %>
-                <strong style='color:green;'>Success</strong>
-            <% } else { %>
-                <strong style='color:red;'>Failure</strong>
-            <% } %>
-        </form>
-        <form method="POST" action="/attack-vector-tester/js-injection-one">
-            <label>JS Injection Attack (using '): </label><input value="' || (function(){ var date=new Date(); do{curDate = new Date();}while(curDate-date<10000);})() || '" name="payload" type="text" /></label>
-            <% if(query) { %>
-                <%=query %> 
-                <% } %>
-            <input type="hidden" name="quoteType" value="0"  />
-            <input type="submit" value="Submit" />  
-            <% if(success){ %>
-                <strong style='color:green;'>Success</strong>
-            <% } else { %>
-                <strong style='color:red;'>Failure</strong>
-            <% } %>
-        </form>
-        <form method="POST" action="/attack-vector-tester/js-injection-one">
-            <label>JS Injection Attack (using "): </label><input value='" || (function(){ var date=new Date(); do{curDate = new Date();}while(curDate-date<10000);})() || "' name="payload" type="text" /></label>
-            <% if(query) { %>
-                <%=query %> 
-                <% } %>
-            <input type="hidden" name="quoteType" value="1"  />
-            <input type="submit" value="Submit" />  
-            <% if(success){ %>
-                <strong style='color:green;'>Success</strong>
-            <% } else { %>
-                <strong style='color:red;'>Failure</strong>
-            <% } %>
-        </form>
+
+        <div class="container text-left">
+            <% if(errorMsg != ""){%>
+                <div class="row text-left">
+                    <div class="col"><p style="color: red;">"<%= errorMsg %> </p></div>
+                </div>
+            <%}%>
+        <div class="row">
+            <div class="col">
+                <form method="POST" action="/attack-vector-tester/verb-attack">
+                    <label>Tautologies Attack: </label><input value='{ "$gt": "" }' name="payload" type="text" /></label>
+                    <input type="hidden" name="attackType" value="0" />
+                    <input type="submit" value="Submit" />
+                    <% if(query && attackType == 0) { %>
+                        
+                        <% if(success){ %>
+                            <strong style='color:green;'>Success</strong>
+                        <% } else { %>
+                            <strong style='color:red;'>Failure</strong>
+                        <% } %>
+                        <br />
+                        Query: <%=query %> 
+                        <% } %>
+      
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form method="POST" action="/attack-vector-tester/js-injection-one">
+                    <label>Union Attack: </label><input value="' || 'a'=='a" name="payload" type="text" /></label>
+                    <input type="hidden" name="attackType" value="1" />
+                    <input type="hidden" name="quoteType" value="0"  />
+                    <input type="submit" value="Submit" />  
+                    <% if(query && attackType == 1) { %>
+                       
+                        <% if(success){ %>
+                            <strong style='color:green;'>Success</strong>
+                        <% } else { %>
+                            <strong style='color:red;'>Failure</strong>
+                        <% } %>
+                        <br />
+                        Query: <%=query %> 
+                        <% } %>
+     
+          
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form method="POST" action="/attack-vector-tester/js-injection-one">
+                    <label>JS Injection Attack (using '): </label><input value="' || (function(){ var date=new Date(); do{curDate = new Date();}while(curDate-date<10000);})() || '" name="payload" type="text" /></label>
+                    <input type="hidden" name="quoteType" value="0"  />
+                    <input type="hidden" name="attackType" value="2" />
+                    <input type="submit" value="Submit" />  
+                    <% if(query && attackType == 2) { %>
+                        
+                        <% if(success){ %>
+                            <strong style='color:green;'>Success</strong>
+                        <% } else { %>
+                            <strong style='color:red;'>Failure</strong>
+                        <% } %>
+                        <br />
+                        Query: <%=query %> 
+                        <% } %>
+
+                    
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form method="POST" action="/attack-vector-tester/js-injection-one">
+                    <label>JS Injection Attack (using "): </label><input value='" || (function(){ var date=new Date(); do{curDate = new Date();}while(curDate-date<10000);})() || "' name="payload" type="text" /></label>
+                    <input type="hidden" name="quoteType" value="1"  />
+                    <input type="hidden" name="attackType" value="3" />
+                    <input type="submit" value="Submit" /> 
+                    <% if(query && attackType == 3) { %>
+                  
+                        <% if(success){ %>
+                            <strong style='color:green;'>Success</strong>
+                        <% } else { %>
+                            <strong style='color:red;'>Failure</strong>
+                        <% } %>
+                        <br />
+                        Query: <%=query %> 
+                        <% } %>
+   
+                    
+                </form>
+            </div>
+        </div>
+
+        
+      
+  </div>
