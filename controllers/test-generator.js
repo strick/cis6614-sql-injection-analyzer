@@ -19,10 +19,7 @@ function runScan(body) {
         }
 
         return successes;
-    })
-    .catch(function(e){
-        console.log("Error: " + e);
-    });;
+    });
 
 }
 
@@ -88,6 +85,19 @@ describe('${attackRoute} controller requests', () => {
                 }
            });
 
+        })
+        .catch(function(e){
+            console.log("Error: " + e);
+            response.render('test-generator/index', {
+                pageTitle: 'Test Generator - Bad URL Requested',
+                success: [],
+                jasmineTests: [],
+                defaultConfigOptions: {
+                    url: request.body.url,
+                    successContent: request.body.successContent,
+                    targetInputs: request.body.targetInputs
+                }
+           });
         });
         
     }
