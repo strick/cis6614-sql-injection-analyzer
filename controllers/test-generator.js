@@ -31,6 +31,7 @@ module.exports = {
             pageTitle: 'Test Generator',
             success: [],
             jasmineTests: [],
+            showNoTests: false,
             defaultConfigOptions: {
                 url: config.testApp['app-url'] + config.testApp.routes.login.url,
                 targetInputs: config.testApp.routes.login.targetInputs,
@@ -78,6 +79,7 @@ describe('${attackRoute} controller requests', () => {
                 pageTitle: 'Test Generator',
                 success: successfulAttacks,
                 jasmineTests: jasmineTests,
+                showNoTests: true,
                 defaultConfigOptions: {
                     url: request.body.url,
                     successContent: request.body.successContent,
@@ -92,6 +94,7 @@ describe('${attackRoute} controller requests', () => {
                 pageTitle: 'Test Generator - Bad URL Requested',
                 success: [],
                 jasmineTests: [],
+                showNoTests: true,
                 defaultConfigOptions: {
                     url: request.body.url,
                     successContent: request.body.successContent,

@@ -9,6 +9,12 @@
                     </div>        
                 </div>
                 <% } %>
+            <% if(showNoTests && jasmineTests.length == 0){ %>
+                <div class="row">
+                    <div class="col text-left">No tests are able to be generated</div>
+                </div>
+                
+            <%} %> 
         </div>
         <div class="col-4">        
             <h4>Target Application Configuration</h2>
